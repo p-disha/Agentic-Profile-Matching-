@@ -1,0 +1,15 @@
+```mermaid
+stateDiagram-v2
+    [*] --> parse_jd: START (User Input)
+    
+    parse_jd --> extract_requirements: Intent = JD or QUERY
+    parse_jd --> human_feedback_loop: Intent = COMPARE, EXPLAIN, or FEEDBACK
+    
+    extract_requirements --> search_resumes: Extract must-have/nice-to-have
+    search_resumes --> rank_candidates: Retrieve matching profiles
+    rank_candidates --> generate_report: Rank top candidates (multi-round)
+    generate_report --> [*]: END (Report presented)
+    
+    human_feedback_loop --> extract_requirements: Refine search (feedback)
+    human_feedback_loop --> [*]: Answer question/compare
+```
